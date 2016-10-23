@@ -104,7 +104,7 @@ def print_output(train_data, test_data, k, class_or_res):
         for i in range(len(test_data)):
             neighbours_list = get_neighbours(test_data[i], train_data, k)
             print "Predicted value : ", "{0:.6f}".format(get_prediction_response(neighbours_list)), '\t', "Actual value : ", "{0:.6f}".format(test_data[i][-1])
-            sum_error += abs(train_data[i][-1] - get_prediction_response(neighbours_list))
+            sum_error += abs(test_data[i][-1] - get_prediction_response(neighbours_list))
         print "Mean absolute error : ", (sum_error / total_test_instances)
         print "Total number of instances : ", total_test_instances
     else:
@@ -139,9 +139,9 @@ if __name__ == '__main__':
         mean_abs_error1 = find_accuracy_error(train_data_loaded, k1, metadata_train.names()[-1])
         print "Mean absolute error for k = ", k1, " : ", mean_abs_error1
         mean_abs_error2 = find_accuracy_error(train_data_loaded, k2, metadata_train.names()[-1])
-        print "Mean absolute error for k = ", k1, " : ", mean_abs_error2
+        print "Mean absolute error for k = ", k2, " : ", mean_abs_error2
         mean_abs_error3 = find_accuracy_error(train_data_loaded, k3, metadata_train.names()[-1])
-        print "Mean absolute error for k = ", k1, " : ", mean_abs_error3
+        print "Mean absolute error for k = ", k3, " : ", mean_abs_error3
 
         value_dict1 = {mean_abs_error1: k1, mean_abs_error2: k2, mean_abs_error3: k3}
 
